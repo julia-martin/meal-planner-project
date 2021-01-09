@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+<!-- Ingredients bar-->
+<div class='ingredients'>
+    <h5 class='list-title'>Ingredients I Have</h5>
+    <a href='/ingredients'>Edit</a>
+    {% for ingredient in ingredients %}
+    <ul class='ing-list'>
+        <li class='ing'><span>{{ ingredient }}</span></li>
+    </ul>
+    {% endfor %}
+</div>
+
+<div class='container meals'>
+    <h1>My Meal Plan</h1>
+    {% for date in dates %}
+    <div class="container day">
+        <h5 class='date'>{{ date | safe }}</h5>
+        <div class="row">
+            <div class="col">
+                <b class='mealtype'>Breakfast</b>
+                <br>
+                <p>Name of Meal</p>
+                <div contentEditable="true" class='edit' name='name'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Breakfast' %}
+                                {{ row['name'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Key Ingredients</p>
+                <div contentEditable="true" class='edit edit-lg' name='key-ingred'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Breakfast' %}
+                                {{ row['key_ingred'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Recipe Link</p>
+                <div contentEditable="true" class='edit' name='recipe'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Breakfast' %}
+                                {{ row['recipe'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <a class='recipe-link' href='#'>Recipe Link</a>
+                <button class='btn-light save' type='submit'>Save</button>
+            </div>
+            <div class="col">
+                <b class='mealtype'>Lunch</b>
+                <br>
+                <p>Name of Meal</p>
+                <div contentEditable="true" class='edit' name='name'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Lunch' %}
+                                {{ row['name'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Key Ingredients</p>
+                <div contentEditable="true" class='edit edit-lg' name='key-ingred'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Lunch' %}
+                                {{ row['key_ingred'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Recipe Link</p>
+                <div contentEditable="true" class='edit' name='recipe'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Lunch' %}
+                                {{ row['recipe'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <a class='recipe-link' href='#'>Recipe Link</a>
+                <button class='btn-light save' type='submit'>Save</button>
+                </form>
+            </div>
+            <div class="col">
+                <b class='mealtype'>Dinner</b>
+                <br>
+                <p>Name of Meal</p>
+                <div contentEditable="true" class='edit' name='name'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Dinner' %}
+                                {{ row['name'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Key Ingredients</p>
+                <div contentEditable="true" class='edit edit-lg' name='key-ingred'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Dinner' %}
+                                {{ row['key_ingred'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p>Recipe Link</p>
+                <div contentEditable="true" class='edit' name='recipe'>
+                    {% if meals %}
+                        {% for row in meals %}
+                            {% if row['date'] == date and row['meal'] == 'Dinner' %}
+                                {{ row['recipe'] }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <a class='recipe-link' href='#'>Recipe Link</a>
+                <button class='btn-light save' type='submit'>Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('div.edit[name="recipe"]').blur(function() {
+        $(this).siblings(".recipe-link").attr("href", $(this).contents().first('[nodeType=3]').text());
+        $(this).siblings(".recipe-link").css("color", "blue");
+        $(this).css("background-color", 'gray');
+    });
+
+    $('div.edit[name="recipe"]').focus(function() {
+        $(this).css("background-color", 'white');
+    })
+
+    $('.save').on('click', function(event) {
+        $.ajax({
+            type: 'POST',
+            url: '/',
+            data: JSON.stringify({
+                'name': $.trim($(event.target).siblings(".edit[name='name']").contents().first('[nodeType=3]').text()),
+                'key_ingred': $.trim($(event.target).siblings(".edit[name='key-ingred']").contents().first('[nodeType=3]').text()),
+                'recipe': $.trim($(event.target).siblings(".edit[name='recipe']").contents().first('[nodeType=3]').text()),
+                'meal': $.trim($(event.target).siblings('b').text()),
+                'date': $.trim($(event.target).parent().parent().parent().children("h5").contents().first('[nodeType=3]').text())
+            }),
+            complete: function() {
+                $(event.target).css("background-color", "lightgreen");
+            },
+            contentType: 'application/json',
+            dataType: 'json'
+        });
+    });
+</script>
+{% endblock %}

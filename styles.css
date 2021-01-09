@@ -1,0 +1,193 @@
+html, body, main {
+    height: 100%;
+    background-color:rgb(241, 241, 197)
+}
+
+h1 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color:  #036950;
+}
+
+p {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin-bottom: 5px;
+}
+
+a {
+    font-weight: bold;
+}
+
+ul.ing-list {
+    margin: 10px;
+    padding: 0;
+}
+
+nav.navbar.navbar-expand-md {
+    color: #020202;
+    background-color: #036950;
+}
+
+.navbar-brand {
+    font-family: 'Yellowtail', cursive;
+    color: white;
+    font-size: xx-large;
+    margin-left: 20px;
+}
+
+.navbar-brand:hover, .nav-item .nav-link:hover, .subtitle {
+    color: #1ecca0;
+}
+
+.subtitle {
+    font-family: 'Yellowtail';
+    font-size: 'x-large';
+    color: white;
+    display: block;
+    width: 400px;
+    margin: 0;
+    padding: 0rem 1rem;
+
+}
+
+.nav-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.nav-item .nav-link {
+    color: lightgray;
+}
+
+.navbar-nav {
+    /* Not working for some reason */
+    float: right;
+    right: 10px;
+    margin-right: 10px;
+}
+
+main .form-control {
+    display: inline-block;
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main {
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+    /* Center contents */
+    text-align: center;
+}
+
+svg {
+    display: inline;
+    border: none
+}
+
+div.ingredients {
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    overflow: auto;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(182, 182, 31);;
+}
+
+div#edit-page.ingredients {
+    width: 50%;
+    margin: auto;
+    left: 0;
+}
+
+.ing {
+    background-color: lightyellow;
+    display: block;
+    width: 100%;
+    border: 1px solid green;
+    padding: 2px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.list-title {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: #036950;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+b.mealtype {
+    margin-bottom: 15px;
+}
+
+.meals {
+    justify-content: center;
+    left: 0;
+    margin-top: 10px;
+    padding-right: 20%;
+}
+
+.add-item {
+    max-width: 200px;
+    overflow: hidden;
+}
+
+span.material-icons.delete:hover {
+    cursor: pointer;
+}
+
+div.day {
+    background-color: lightyellow;
+    border: 3px solid rgb(182, 182, 31);
+    padding: 10px 30px;
+    margin-bottom: 30px;
+}
+
+div.col {
+    border: 2px;
+    padding: 5px;
+    margin: 5px;
+}
+
+div.perm {
+    background-color: white;
+    border-color: #f1f1f136;
+    width: 80%;
+}
+
+div.col div.edit {
+    background-color: white;
+    border: 1px dotted gray;
+    margin: 5px;
+    overflow: auto;
+}
+
+div.col div.edit-lg {
+    height: 50px;
+}
+
+.btn {
+    background-color: white;
+    border: 3px solid gray;
+}
+
+.btn-primary {
+    margin-top: 10px;
+}
+
+.btn-light {
+    display: block;
+    margin: auto;
+}
+
+.recipe-link {
+    color: lightgray;
+}
+
+p.error {
+    color: red;
+}
+

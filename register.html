@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Account
+{% endblock %}
+
+{% block main %}
+<div class='container meals'>
+    <h1>Create an Account</h1>
+
+<form action='/register' method='post'>
+    <div class='form-group'>
+        <p><b>Name</b></p>
+        <input autofocus class='form-control' name='name' placeholder='Name'>
+        <div><br></div>
+    </div>
+    <div class='form-group'>
+        <p><b>Username</b></p>
+        <input autofocus class='form-control' name='username' placeholder='Username'>
+        <div><br></div>
+    </div>
+    <div class='form-group'>
+        <p><b>Password</b><br>(must contain at least 8 characters)</p>
+        <input class='form-control' name='password' placeholder='Password' type='password'>
+        <div><br></div>
+    </div>
+    <button class='btn-primary' type='submit'>Create account</button>
+</form>
+
+</div>
+{% endblock %}

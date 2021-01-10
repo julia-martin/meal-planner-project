@@ -1,6 +1,6 @@
 import os
 from flask import Flask, flash, redirect, render_template, request, session, url_for, g
-from flask_session import Session
+from flask_session.__init__ import Session
 from markupsafe import escape
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -22,7 +22,6 @@ Session(app)
 
 db = SQL(os.getenv("DATABASE_URL"))
 
-# Login code from https://flask.palletsprojects.com/en/1.1.x/quickstart/
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':

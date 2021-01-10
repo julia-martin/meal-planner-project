@@ -20,6 +20,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = os.urandom(12).hex()
 Session(app)
 
+os.environ['DATABASE_URL'] = "postgres://blwuossctktmhd:faf0597028bd6a8bbd8577a86094f83327d352a490dbef493be8866b9e6594fa@ec2-52-205-99-67.compute-1.amazonaws.com:5432/daq4ri2pddmdfp"
 db = SQL(os.getenv("DATABASE_URL"))
 
 @app.route('/', methods=['GET', 'POST'])

@@ -1,5 +1,5 @@
 # meal-planner-project
-Flask app created for CS50 final project
+Flask app created for CS50 final project: try it out at https://weekly-mealplanner.herokuapp.com/
 
 For my first-ever project, I created a meal planner web app. It’s something I find useful, since I like to plan out what I will cook a few days in advance to help plan for grocery shopping. 
 

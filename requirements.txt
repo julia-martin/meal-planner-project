@@ -8,7 +8,7 @@ ipaddress==1.0.22
 itsdangerous==1.1.0
 Jinja2==2.11.2
 macholib==1.5.1
-MarkupSafe==1.1.1\
+MarkupSafe==1.1.1
 pyOpenSSL==19.0.0
 pyparsing==2.0.1
 python-dateutil==1.5

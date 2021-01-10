@@ -20,12 +20,11 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = os.urandom(12).hex()
 Session(app)
 
-
+db = SQL(os.getenv("DATABASE_URL"))
 
 # Login code from https://flask.palletsprojects.com/en/1.1.x/quickstart/
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    db = SQL("sqlite:///database.db")
     if request.method == 'POST':
         if request.get_json():
             data = request.get_json()
@@ -77,7 +76,6 @@ def index():
 
 @app.route('/ingredients', methods=['GET', 'POST'])
 def ingredients():
-    db = SQL("sqlite:///database.db")
     if request.method == 'POST':
         # For adding ingredients
         if request.form:  # if 'addItem' in request.form:
@@ -103,7 +101,6 @@ def ingredients():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    db = SQL("sqlite:///database.db")
     if request.method == 'POST':
         # Check username
         user_lookup = db.execute("SELECT * FROM users WHERE username = ?", request.form['username'])
@@ -119,7 +116,6 @@ def login():
 
 @app.route('/logout')
 def logout():
-    db = SQL("sqlite:///database.db")
     # Update ingredient list in table
     db.execute("DELETE FROM ingredient_list WHERE username = ?", session['username'])
     for ing in session['ingredients']:
@@ -129,7 +125,6 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    db = SQL("sqlite:///database.db")
     # Check name and username
     if request.method == 'POST':
         if not request.form['name']:

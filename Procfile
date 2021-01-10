@@ -1,1 +1,1 @@
-web: gunicorn meal-planner-project:app
+web: gunicorn application:app
